@@ -5,13 +5,16 @@ A full-stack web application for managing employee information, built with Sprin
 ## 🚀 Features
 
 - **Backend (Spring Boot)**
-  - RESTful API endpoints for CRUD operations
+  - RESTful API endpoints for employee management
   - JPA/Hibernate for database operations
   - MySQL database integration
-  - Exception handling and validation
+  - Clean architecture with Controller-Service-Repository pattern
 
 - **Frontend (React)**
-  - Coming soon...
+  - Modern UI with React 18
+  - Bootstrap 5 for responsive design
+  - Axios for API integration
+  - Clean component structure
 
 ## 🛠️ Tech Stack
 
@@ -25,23 +28,33 @@ A full-stack web application for managing employee information, built with Sprin
 ## 🏗️ Project Structure
 
 ```
-employee/
-├── src/
-│   └── main/
-│       └── java/com/priyansh/employee/
-│           ├── controller/      # REST controllers
-│           ├── entity/          # JPA entities
-│           ├── repository/      # Data access layer
-│           ├── service/         # Business logic
-│           └── EmployeeApplication.java  # Main application class
-│       └── resources/
-│           └── application.properties    # Configuration
+project/
+├── employee/                    # Backend (Spring Boot)
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/com/priyansh/employee/
+│   │       │   ├── controller/      # REST controllers
+│   │       │   ├── entity/          # JPA entities
+│   │       │   ├── repository/      # Data access layer
+│   │       │   ├── service/         # Business logic
+│   │       │   └── EmployeeApplication.java
+│   │       └── resources/
+│   │           └── application.properties
+│   └── pom.xml
+│
+└── employeeweb/                 # Frontend (React)
+    ├── src/
+    │   ├── components/          # Reusable components
+    │   ├── services/            # API services
+    │   └── App.js               # Main application component
+    └── package.json
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Java 17 or higher
+- Node.js 16+ and npm
 - MySQL 8.0 or higher
 - Maven 3.6.3 or higher
 
@@ -57,11 +70,26 @@ employee/
    - Create a MySQL database named `employee`
    - Update the database credentials in `employee/src/main/resources/application.properties`
 
-3. **Build and run the application**
+3. **Build and run the backend**
    ```bash
    cd employee
-   mvn spring-boot:run
+   ./mvnw spring-boot:run
    ```
+   The backend will be available at `http://localhost:8080`
+
+### Frontend Setup
+
+1. **Install dependencies**
+   ```bash
+   cd employeeweb
+   npm install
+   ```
+
+2. **Start the development server**
+   ```bash
+   npm start
+   ```
+   The frontend will be available at `http://localhost:3000`
 
 ## 📚 API Documentation
 
@@ -69,39 +97,39 @@ employee/
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET    | /api/employees | Get all employees |
-| GET    | /api/employees/{id} | Get employee by ID |
-| POST   | /api/employees | Create a new employee |
-| PUT    | /api/employees/{id} | Update an employee |
-| DELETE | /api/employees/{id} | Delete an employee |
+| POST   | /api/employee | Create a new employee |
 
-### Example Requests
+### Example Request
 
-**Create Employee**
 ```http
-POST /api/employees
+POST /api/employee
 Content-Type: application/json
 
 {
     "name": "John Doe",
-    "email": "john.doe@example.com",
-    "phone": "+1234567890",
+    "email": "john@example.com",
+    "phone": "1234567890",
     "department": "Engineering"
 }
 ```
 
-**Update Employee**
-```http
-PUT /api/employees/1
-Content-Type: application/json
+## 🤝 Contributing
 
-{
-    "name": "John Doe Updated",
-    "email": "john.doe.updated@example.com",
-    "phone": "+1234567891",
-    "department": "HR"
-}
-```
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Spring Boot Team
+- React Team
+- All contributors
 
 ## 🤝 Contributing
 

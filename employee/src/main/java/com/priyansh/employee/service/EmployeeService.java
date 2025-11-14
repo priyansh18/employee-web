@@ -2,6 +2,7 @@ package com.priyansh.employee.service;
 
 import com.priyansh.employee.entity.Employee;
 import com.priyansh.employee.repository.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,38 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
-    }
-
-    public Optional<Employee> getEmployeeById(Long id) {
-        return employeeRepository.findById(id);
-    }
-
-    public Employee createEmployee(Employee employee) {
+   public Employee postEmployee(Employee employee) {
         return employeeRepository.save(employee);
-    }
-
-    public Employee updateEmployee(Long id, Employee employeeDetails) {
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
-        
-        employee.setName(employeeDetails.getName());
-        employee.setEmail(employeeDetails.getEmail());
-        employee.setPhone(employeeDetails.getPhone());
-        employee.setDepartment(employeeDetails.getDepartment());
-        
-        return employeeRepository.save(employee);
-    }
-
-    public void deleteEmployee(Long id) {
-        Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
-        employeeRepository.delete(employee);
     }
 }
