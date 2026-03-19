@@ -1,3 +1,8 @@
+> **This project has been merged into [PryFry](https://github.com/priyansh18/Resturant_site) - a full restaurant management platform.**
+> **Live:** [pryfry-priyanshsinghal.vercel.app](https://pryfry-priyanshsinghal.vercel.app)
+
+---
+
 # Employee Management System
 
 A full-stack web application for managing employee information, built with Spring Boot and React.
